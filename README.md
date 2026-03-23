@@ -1,80 +1,151 @@
-📊 Fund Navigator – Mutual Fund Analysis & Recommendation System
+# 💰 Fund Navigator
 
-Fund Navigator is a data-driven application that helps users analyze, compare, and discover mutual funds using data visualization and intelligent insights.
+A smart **Streamlit-based investment recommendation system** that suggests optimal mutual funds based on user profile and financial metrics like Sharpe ratio, Beta, Alpha, and risk measures.
 
-🚀 Features--------------------
-📈 Analyze mutual fund performance
-🔍 Compare multiple funds
-📊 Interactive visualizations (returns, risk, trends)
-🧠 Data-driven insights for better investment decisions
-📂 Clean dataset handling and preprocessing
-⚡ Fast and user-friendly interface
+---
 
+## ✨ Features
 
-🏗️ Tech Stack----------------------
-💻 Languages & Libraries
-Python
-Pandas
-NumPy
-📊 Visualization
-Matplotlib
-Seaborn
-Plotly
-🌐 Interface
-Streamlit
+* 📊 Data-driven mutual fund analysis
+* 🎯 Personalized fund recommendations
+* 📈 Risk assessment using financial indicators (Sharpe, Beta, Sortino)
+* ⚡ Interactive UI built with Streamlit
+* 🔄 Dynamic session-based user inputs
+* 🧮 Automated fund selection logic
 
+---
 
-📂 Project Structure--------------------------
+## 🏗️ Architecture
+
+```
+User Input (Age, Investment Amount)
+            ↓
+    Streamlit Frontend (app.py)
+            ↓
+   Data Processing (functions.py)
+            ↓
+   Financial Metrics Filtering
+            ↓
+   Recommendation Engine
+            ↓
+      Suggested Funds Output
+```
+
+---
+
+## 📂 Project Structure
+
+```
 fund_navigator/
-│
-├── app.py                 # Streamlit application
-├── data/                  # Dataset files
-├── notebooks/             # Jupyter notebooks (EDA/analysis)
-├── utils/                 # Helper functions
-├── requirements.txt       # Dependencies
-└── README.md
+│── app.py               # Streamlit application entry point
+│── functions.py        # Core logic & recommendation functions
+│── Analysis.ipynb      # Data exploration & analysis
+│── data.csv            # Mutual fund dataset
+│── README.md           # Project documentation
+```
 
+---
 
-⚙️ Installation & Setup--------------------------
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/fund-navigator.git
-cd fund-navigator
+## 🚀 Quick Start
 
-2️⃣ Create Virtual Environment (Optional but Recommended)
-python -m venv venv
-source venv/bin/activate   # Mac/Linux
-venv\Scripts\activate      # Windows
-
-3️⃣ Install Dependencies
+```bash
+git clone <your-repo-link>
+cd fund_navigator
 pip install -r requirements.txt
+```
 
-▶️ Run the Application
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Install Dependencies
+
+```bash
+pip install streamlit pandas
+```
+
+### 2️⃣ Ensure Dataset
+
+* Place `data.csv` in the root directory
+* Dataset should include:
+
+  * sharpe
+  * beta
+  * alpha
+  * sortino
+  * sd
+
+### 3️⃣ Run Application
+
+```bash
 streamlit run app.py
+```
 
+---
 
-📊 Key Functionalities-----------------------------
-📌 Fund filtering based on categories
-📌 Return vs Risk analysis
-📌 Historical performance trends
-📌 Data visualization dashboards
-📌 Insight generation for investors
+## ▶️ How It Works
 
+1. User enters:
 
-🧠 How It Works---------------------------------
-Load mutual fund dataset
-Perform preprocessing & cleaning
-Generate visualizations for insights
-Provide comparison tools for users
-Display results in an interactive dashboard
+   * Age
+   * Investment amount
 
+2. System:
 
-💡 Future Improvements---------------------------
-🤖 AI-based fund recommendation system
-📡 Live market data integration
-🏦 Portfolio tracking feature
-🔐 User authentication
-📱 Mobile-friendly UI
-🤝 Contribution
+   * Cleans dataset (removes invalid values like '-')
+   * Converts financial metrics to numeric
+   * Applies filtering logic
 
-Contributions are welcome!
-Feel free to fork and improve the project.
+3. Output:
+
+   * Recommended mutual funds based on:
+
+     * Risk profile
+     * Performance indicators
+
+---
+
+## 📡 Core Logic (functions.py)
+
+| Function      | Description                                   |
+| ------------- | --------------------------------------------- |
+| `options()`   | Provides filtering criteria                   |
+| `calculate()` | Processes financial metrics & recommendations |
+
+---
+
+## 🛠️ Tech Stack
+
+| Category        | Technology       |
+| --------------- | ---------------- |
+| Frontend        | Streamlit        |
+| Backend Logic   | Python           |
+| Data Processing | Pandas           |
+| Analysis        | Jupyter Notebook |
+
+---
+
+## 🎯 Design Decisions
+
+* **Streamlit used** → Fast prototyping of data apps without frontend complexity
+* **Pandas for processing** → Efficient handling of financial datasets
+* **Metric-based filtering** → Ensures recommendations are data-driven
+* **Session state management** → Maintains user interaction flow
+
+---
+
+## 🔐 Security Best Practices
+
+* Input validation via Streamlit controls
+* No hardcoded sensitive data
+* Clean handling of missing/invalid dataset values
+* Safe type conversion for financial metrics
+
+---
+
+## 🚀 Future Improvements
+
+* 🤖 Add ML-based recommendation model
+* 📊 Visualize fund performance with charts
+* 🌐 Deploy on Streamlit Cloud / AWS
+* 👥 Add user login & portfolio tracking
